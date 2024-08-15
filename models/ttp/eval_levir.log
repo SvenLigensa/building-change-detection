@@ -1,0 +1,1711 @@
+2024/07/29 10:50:06 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.8.10 (default, Jun 22 2022, 20:18:18) [GCC 9.4.0]
+    CUDA available: True
+    MUSA available: False
+    numpy_random_seed: 1436342556
+    GPU 0: NVIDIA GeForce RTX 3090
+    CUDA_HOME: /usr/local/cuda
+    NVCC: Cuda compilation tools, release 11.1, V11.1.105
+    GCC: x86_64-linux-gnu-gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+    PyTorch: 2.0.0+cu117
+    PyTorch compiling details: PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201703
+  - Intel(R) oneAPI Math Kernel Library Version 2022.2-Product Build 20220804 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.7.3 (Git Hash 6dbeffbae1f23cbbeae17adb7b5b13f1f37c080e)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -D_GLIBCXX_USE_CXX11_ABI=0 -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOROCTRACER -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_DISABLE_GPU_ASSERTS=ON, TORCH_VERSION=2.0.0, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=1, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+    TorchVision: 0.15.1+cu117
+    OpenCV: 4.9.0
+    MMEngine: 0.10.4
+
+Runtime environment:
+    cudnn_benchmark: True
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 1436342556
+    Distributed launcher: none
+    Distributed training: False
+    GPU number: 1
+------------------------------------------------------------
+
+2024/07/29 10:50:06 - mmengine - INFO - Config:
+crop_size = (
+    512,
+    512,
+)
+data_preprocessor = dict(
+    bgr_to_rgb=True,
+    mean=[
+        123.675,
+        116.28,
+        103.53,
+        123.675,
+        116.28,
+        103.53,
+    ],
+    pad_val=0,
+    seg_pad_val=255,
+    size_divisor=32,
+    std=[
+        58.395,
+        57.12,
+        57.375,
+        58.395,
+        57.12,
+        57.375,
+    ],
+    test_cfg=dict(size_divisor=32),
+    type='DualInputSegDataPreProcessor')
+data_root = 'data/LEVIR-CD'
+dataset_type = 'LEVIR_CD_Dataset'
+default_hooks = dict(
+    logger=dict(interval=50, log_metric_by_epoch=True, type='LoggerHook'),
+    sampler_seed=dict(type='DistSamplerSeedHook'),
+    timer=dict(type='IterTimerHook'),
+    visualization=dict(
+        draw=True,
+        img_shape=(
+            1024,
+            1024,
+            3,
+        ),
+        interval=1,
+        type='CDVisualizationHook'))
+default_scope = 'opencd'
+env_cfg = dict(
+    cudnn_benchmark=True,
+    dist_cfg=dict(backend='nccl'),
+    mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
+fpn_norm_cfg = dict(requires_grad=True, type='mmpretrain.LN2d')
+launcher = 'none'
+load_from = 'ttp/iter_325000.pth'
+log_level = 'INFO'
+log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
+model = dict(
+    backbone=dict(
+        encoder_cfg=dict(
+            arch='large',
+            img_size=(
+                512,
+                512,
+            ),
+            init_cfg=dict(
+                checkpoint=
+                'https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth',
+                prefix='backbone.',
+                type='Pretrained'),
+            layer_cfgs=dict(type='TimeFusionTransformerEncoderLayer'),
+            out_channels=256,
+            patch_size=16,
+            type='ViTSAM_Custom',
+            use_abs_pos=True,
+            use_rel_pos=True,
+            window_size=14),
+        peft_cfg=dict(
+            bias='lora_only',
+            lora_dropout=0.01,
+            r=16,
+            target_modules=[
+                'qkv',
+            ]),
+        type='VisionTransformerTurner'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+            123.675,
+            116.28,
+            103.53,
+        ],
+        pad_val=0,
+        seg_pad_val=255,
+        size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+            58.395,
+            57.12,
+            57.375,
+        ],
+        test_cfg=dict(size_divisor=32),
+        type='DualInputSegDataPreProcessor'),
+    decode_head=dict(
+        align_corners=False,
+        channels=256,
+        dropout_ratio=0,
+        in_channels=[
+            256,
+            256,
+            256,
+            256,
+            256,
+        ],
+        in_index=[
+            0,
+            1,
+            2,
+            3,
+            4,
+        ],
+        loss_decode=dict(
+            loss_weight=1.0, type='mmseg.CrossEntropyLoss', use_sigmoid=False),
+        norm_cfg=dict(requires_grad=True, type='SyncBN'),
+        num_classes=2,
+        out_size=(
+            128,
+            128,
+        ),
+        type='MLPSegHead'),
+    neck=dict(
+        necks=[
+            dict(out_indices=(0, ), policy='concat', type='FeatureFusionNeck'),
+            dict(
+                backbone_channel=512,
+                in_channels=[
+                    128,
+                    256,
+                    512,
+                    512,
+                ],
+                norm_cfg=dict(requires_grad=True, type='mmpretrain.LN2d'),
+                num_outs=5,
+                out_channels=256,
+                type='SimpleFPN'),
+        ],
+        type='SequentialNeck'),
+    test_cfg=dict(crop_size=(
+        512,
+        512,
+    ), mode='slide', stride=(
+        256,
+        256,
+    )),
+    train_cfg=dict(),
+    type='TimeTravellingPixels')
+norm_cfg = dict(requires_grad=True, type='SyncBN')
+resume = False
+sam_pretrain_ckpt_path = 'https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth'
+test_cfg = dict(type='TestLoop')
+test_dataloader = dict(
+    batch_size=1,
+    dataset=dict(
+        data_prefix=dict(
+            img_path_from='all/A',
+            img_path_to='all/B',
+            seg_map_path='all/label'),
+        data_root='data/LEVIR-CD',
+        pipeline=[
+            dict(type='MultiImgLoadImageFromFile'),
+            dict(keep_ratio=True, scale=(
+                1024,
+                1024,
+            ), type='MultiImgResize'),
+            dict(type='MultiImgLoadAnnotations'),
+            dict(type='MultiImgPackSegInputs'),
+        ],
+        type='LEVIR_CD_Dataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler'))
+test_evaluator = dict(
+    iou_metrics=[
+        'mFscore',
+        'mIoU',
+    ], type='mmseg.IoUMetric')
+test_pipeline = [
+    dict(type='MultiImgLoadImageFromFile'),
+    dict(keep_ratio=True, scale=(
+        1024,
+        1024,
+    ), type='MultiImgResize'),
+    dict(type='MultiImgLoadAnnotations'),
+    dict(type='MultiImgPackSegInputs'),
+]
+tta_model = dict(type='mmseg.SegTTAModel')
+vis_backends = [
+    dict(type='CDLocalVisBackend'),
+]
+visualizer = dict(
+    alpha=1.0,
+    name='visualizer',
+    save_dir='./ttp/levircd',
+    type='CDLocalVisualizer',
+    vis_backends=[
+        dict(type='CDLocalVisBackend'),
+    ])
+work_dir = './ttp'
+
+2024/07/29 10:51:52 - mmengine - INFO - load backbone. in model from: https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth
+2024/07/29 10:51:53 - mmengine - INFO - Resize the pos_embed shape from torch.Size([1, 64, 64, 1024]) to torch.Size([1, 32, 32, 1024]).
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.5.attn.rel_pos_h from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.5.attn.rel_pos_w from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.11.attn.rel_pos_h from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.11.attn.rel_pos_w from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.17.attn.rel_pos_h from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.17.attn.rel_pos_w from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.23.attn.rel_pos_h from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - INFO - Resize the layers.23.attn.rel_pos_w from torch.Size([127, 64]) to torch.Size([63, 64])
+2024/07/29 10:51:53 - mmengine - WARNING - The model and loaded state dict do not match exactly
+
+missing keys in source state_dict: layers.0.down_channel.weight, layers.0.soft_ffn.0.weight, layers.0.soft_ffn.0.bias, layers.0.soft_ffn.2.weight, layers.0.soft_ffn.2.bias, layers.1.down_channel.weight, layers.1.soft_ffn.0.weight, layers.1.soft_ffn.0.bias, layers.1.soft_ffn.2.weight, layers.1.soft_ffn.2.bias, layers.2.down_channel.weight, layers.2.soft_ffn.0.weight, layers.2.soft_ffn.0.bias, layers.2.soft_ffn.2.weight, layers.2.soft_ffn.2.bias, layers.3.down_channel.weight, layers.3.soft_ffn.0.weight, layers.3.soft_ffn.0.bias, layers.3.soft_ffn.2.weight, layers.3.soft_ffn.2.bias, layers.4.down_channel.weight, layers.4.soft_ffn.0.weight, layers.4.soft_ffn.0.bias, layers.4.soft_ffn.2.weight, layers.4.soft_ffn.2.bias, layers.6.down_channel.weight, layers.6.soft_ffn.0.weight, layers.6.soft_ffn.0.bias, layers.6.soft_ffn.2.weight, layers.6.soft_ffn.2.bias, layers.7.down_channel.weight, layers.7.soft_ffn.0.weight, layers.7.soft_ffn.0.bias, layers.7.soft_ffn.2.weight, layers.7.soft_ffn.2.bias, layers.8.down_channel.weight, layers.8.soft_ffn.0.weight, layers.8.soft_ffn.0.bias, layers.8.soft_ffn.2.weight, layers.8.soft_ffn.2.bias, layers.9.down_channel.weight, layers.9.soft_ffn.0.weight, layers.9.soft_ffn.0.bias, layers.9.soft_ffn.2.weight, layers.9.soft_ffn.2.bias, layers.10.down_channel.weight, layers.10.soft_ffn.0.weight, layers.10.soft_ffn.0.bias, layers.10.soft_ffn.2.weight, layers.10.soft_ffn.2.bias, layers.12.down_channel.weight, layers.12.soft_ffn.0.weight, layers.12.soft_ffn.0.bias, layers.12.soft_ffn.2.weight, layers.12.soft_ffn.2.bias, layers.13.down_channel.weight, layers.13.soft_ffn.0.weight, layers.13.soft_ffn.0.bias, layers.13.soft_ffn.2.weight, layers.13.soft_ffn.2.bias, layers.14.down_channel.weight, layers.14.soft_ffn.0.weight, layers.14.soft_ffn.0.bias, layers.14.soft_ffn.2.weight, layers.14.soft_ffn.2.bias, layers.15.down_channel.weight, layers.15.soft_ffn.0.weight, layers.15.soft_ffn.0.bias, layers.15.soft_ffn.2.weight, layers.15.soft_ffn.2.bias, layers.16.down_channel.weight, layers.16.soft_ffn.0.weight, layers.16.soft_ffn.0.bias, layers.16.soft_ffn.2.weight, layers.16.soft_ffn.2.bias, layers.18.down_channel.weight, layers.18.soft_ffn.0.weight, layers.18.soft_ffn.0.bias, layers.18.soft_ffn.2.weight, layers.18.soft_ffn.2.bias, layers.19.down_channel.weight, layers.19.soft_ffn.0.weight, layers.19.soft_ffn.0.bias, layers.19.soft_ffn.2.weight, layers.19.soft_ffn.2.bias, layers.20.down_channel.weight, layers.20.soft_ffn.0.weight, layers.20.soft_ffn.0.bias, layers.20.soft_ffn.2.weight, layers.20.soft_ffn.2.bias, layers.21.down_channel.weight, layers.21.soft_ffn.0.weight, layers.21.soft_ffn.0.bias, layers.21.soft_ffn.2.weight, layers.21.soft_ffn.2.bias, layers.22.down_channel.weight, layers.22.soft_ffn.0.weight, layers.22.soft_ffn.0.bias, layers.22.soft_ffn.2.weight, layers.22.soft_ffn.2.bias
+
+Name of parameter - Initialization information
+
+pos_embed - torch.Size([1, 32, 32, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+patch_embed.projection.weight - torch.Size([1024, 3, 16, 16]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+patch_embed.projection.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.0.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.0.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.0.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.0.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.0.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.1.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.1.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.1.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.1.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.1.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.1.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.2.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.2.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.2.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.2.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.2.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.2.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.3.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.3.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.3.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.3.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.3.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.3.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.4.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.4.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.4.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.4.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.4.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.4.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.5.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.rel_pos_h - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.rel_pos_w - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.5.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.6.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.6.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.6.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.6.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.6.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.7.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.7.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.7.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.7.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.7.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.7.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.8.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.8.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.8.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.8.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.8.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.8.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.9.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.9.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.9.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.9.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.9.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.9.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.10.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.10.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.10.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.10.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.10.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.10.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.11.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.rel_pos_h - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.rel_pos_w - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.11.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.12.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.12.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.12.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.12.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.12.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.13.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.13.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.13.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.13.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.13.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.13.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.14.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.14.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.14.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.14.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.14.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.14.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.15.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.15.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.15.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.15.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.15.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.15.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.16.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.16.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.16.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.16.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.16.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.16.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.17.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.rel_pos_h - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.rel_pos_w - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.17.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.18.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.18.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.18.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.18.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.18.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.19.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.19.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.19.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.19.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.19.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.19.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.20.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.20.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.20.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.20.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.20.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.20.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.21.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.21.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.21.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.21.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.21.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.21.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.22.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.rel_pos_h - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.rel_pos_w - torch.Size([27, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.22.down_channel.weight - torch.Size([1, 2048, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.22.soft_ffn.0.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.22.soft_ffn.0.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.22.soft_ffn.2.weight - torch.Size([1024, 1024, 1, 1]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.22.soft_ffn.2.bias - torch.Size([1024]): 
+The value is the same before and after calling `init_weights` of ViTSAM_Custom  
+
+layers.23.ln1.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ln1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.rel_pos_h - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.rel_pos_w - torch.Size([63, 64]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.qkv.weight - torch.Size([3072, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.qkv.bias - torch.Size([3072]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.proj.weight - torch.Size([1024, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.attn.proj.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ln2.weight - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ln2.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ffn.layers.0.0.weight - torch.Size([4096, 1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ffn.layers.0.0.bias - torch.Size([4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ffn.layers.1.weight - torch.Size([1024, 4096]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+layers.23.ffn.layers.1.bias - torch.Size([1024]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.0.weight - torch.Size([256, 1024, 1, 1]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.1.weight - torch.Size([256]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.1.bias - torch.Size([256]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.2.weight - torch.Size([256, 256, 3, 3]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.3.weight - torch.Size([256]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+
+channel_reduction.3.bias - torch.Size([256]): 
+PretrainedInit: load from https://download.openmmlab.com/mmclassification/v1/vit_sam/vit-large-p16_sam-pre_3rdparty_sa1b-1024px_20230411-595feafd.pth 
+2024/07/29 10:52:04 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
+2024/07/29 10:52:05 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) CDVisualizationHook                
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) CDVisualizationHook                
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_val:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) CDVisualizationHook                
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test:
+(VERY_HIGH   ) RuntimeInfoHook                    
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+2024/07/29 10:52:09 - mmengine - WARNING - The prefix is not set in metric class IoUMetric.
+2024/07/29 10:52:26 - mmengine - INFO - Load checkpoint from ttp/iter_325000.pth
+2024/07/29 10:53:55 - mmengine - INFO - Epoch(test) [ 50/637]    eta: 0:17:18  time: 1.7697  data_time: 0.1004  memory: 10156  
+2024/07/29 10:55:06 - mmengine - INFO - Epoch(test) [100/637]    eta: 0:14:17  time: 1.4256  data_time: 0.0840  memory: 1865  
+2024/07/29 10:56:18 - mmengine - INFO - Epoch(test) [150/637]    eta: 0:12:31  time: 1.4349  data_time: 0.0855  memory: 1865  
+2024/07/29 10:57:30 - mmengine - INFO - Epoch(test) [200/637]    eta: 0:11:03  time: 1.4405  data_time: 0.0876  memory: 1865  
+2024/07/29 10:58:42 - mmengine - INFO - Epoch(test) [250/637]    eta: 0:09:40  time: 1.4329  data_time: 0.0792  memory: 1865  
+2024/07/29 10:59:53 - mmengine - INFO - Epoch(test) [300/637]    eta: 0:08:21  time: 1.4337  data_time: 0.0801  memory: 1865  
+2024/07/29 11:01:05 - mmengine - INFO - Epoch(test) [350/637]    eta: 0:07:05  time: 1.4358  data_time: 0.0817  memory: 1865  
+2024/07/29 11:02:17 - mmengine - INFO - Epoch(test) [400/637]    eta: 0:05:49  time: 1.4381  data_time: 0.0843  memory: 1865  
+2024/07/29 11:03:29 - mmengine - INFO - Epoch(test) [450/637]    eta: 0:04:35  time: 1.4387  data_time: 0.0847  memory: 1865  
+2024/07/29 11:04:41 - mmengine - INFO - Epoch(test) [500/637]    eta: 0:03:21  time: 1.4378  data_time: 0.0843  memory: 1865  
+2024/07/29 11:05:53 - mmengine - INFO - Epoch(test) [550/637]    eta: 0:02:07  time: 1.4392  data_time: 0.0850  memory: 1865  
+2024/07/29 11:07:05 - mmengine - INFO - Epoch(test) [600/637]    eta: 0:00:54  time: 1.4375  data_time: 0.0838  memory: 1865  
+2024/07/29 11:07:58 - mmengine - INFO - per class results:
+2024/07/29 11:07:58 - mmengine - INFO - 
++-----------+--------+-----------+--------+-------+-------+
+|   Class   | Fscore | Precision | Recall |  IoU  |  Acc  |
++-----------+--------+-----------+--------+-------+-------+
+| unchanged | 98.09  |   96.73   | 99.48  | 96.24 | 99.48 |
+|  changed  | 43.79  |   74.45   | 31.01  | 28.03 | 31.01 |
++-----------+--------+-----------+--------+-------+-------+
+2024/07/29 11:07:58 - mmengine - INFO - Epoch(test) [637/637]    aAcc: 96.3000  mFscore: 70.9400  mPrecision: 85.5900  mRecall: 65.2500  mIoU: 62.1400  mAcc: 65.2500  data_time: 0.0851  time: 1.4623

@@ -382,7 +382,7 @@ visualizer = dict(
     vis_backends=[
         dict(type='CDLocalVisBackend'),
     ])
-work_dir = './changerex_r18'
+work_dir = './changer'
 
 2024/07/18 12:02:37 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
 2024/07/18 12:02:37 - mmengine - INFO - Hooks will be executed in the following order:
@@ -754,10 +754,10 @@ decode_head.discriminator.layers.4.bias - torch.Size([128]):
 The value is the same before and after calling `init_weights` of DIEncoderDecoder  
 2024/07/18 12:02:40 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
 2024/07/18 12:02:40 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
-2024/07/18 12:02:40 - mmengine - INFO - Checkpoints will be saved to /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18.
+2024/07/18 12:02:40 - mmengine - INFO - Checkpoints will be saved to /home/jovyan/work/saved_data/atml_building_change_detection/changer.
 2024/07/18 12:03:28 - mmengine - INFO - Iter(train) [   50/31250]  lr: 4.9050e-05  eta: 8:15:40  time: 0.5893  data_time: 0.0218  memory: 19264  loss: 0.6649  decode.loss_ce: 0.6649  decode.acc_seg: 79.7787
 2024/07/18 12:04:00 - mmengine - INFO - Iter(train) [  100/31250]  lr: 9.9100e-05  eta: 6:55:37  time: 0.7873  data_time: 0.2247  memory: 16989  loss: 0.5629  decode.loss_ce: 0.5629  decode.acc_seg: 97.1947
-2024/07/18 12:04:06 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:04:06 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:04:31 - mmengine - INFO - Iter(train) [  150/31250]  lr: 1.4915e-04  eta: 6:22:50  time: 0.5947  data_time: 0.0229  memory: 16989  loss: 0.1319  decode.loss_ce: 0.1319  decode.acc_seg: 98.1306
 2024/07/18 12:05:03 - mmengine - INFO - Iter(train) [  200/31250]  lr: 1.9920e-04  eta: 6:09:05  time: 0.6920  data_time: 0.1406  memory: 16989  loss: 0.0670  decode.loss_ce: 0.0670  decode.acc_seg: 97.7970
 2024/07/18 12:05:34 - mmengine - INFO - Iter(train) [  250/31250]  lr: 2.4925e-04  eta: 5:59:46  time: 0.5971  data_time: 0.0428  memory: 16989  loss: 0.0645  decode.loss_ce: 0.0645  decode.acc_seg: 99.1858
@@ -775,7 +775,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 12:11:59 - mmengine - INFO - Iter(train) [  850/31250]  lr: 8.4985e-04  eta: 5:33:26  time: 0.6426  data_time: 0.0358  memory: 16989  loss: 0.0559  decode.loss_ce: 0.0559  decode.acc_seg: 97.8049
 2024/07/18 12:12:32 - mmengine - INFO - Iter(train) [  900/31250]  lr: 8.9990e-04  eta: 5:32:23  time: 0.6439  data_time: 0.0478  memory: 16989  loss: 0.0542  decode.loss_ce: 0.0542  decode.acc_seg: 98.8865
 2024/07/18 12:13:04 - mmengine - INFO - Iter(train) [  950/31250]  lr: 9.4995e-04  eta: 5:31:46  time: 0.6745  data_time: 0.1189  memory: 16989  loss: 0.0561  decode.loss_ce: 0.0561  decode.acc_seg: 99.1548
-2024/07/18 12:13:35 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:13:35 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:13:35 - mmengine - INFO - Iter(train) [ 1000/31250]  lr: 1.0000e-03  eta: 5:30:24  time: 0.6458  data_time: 0.0683  memory: 16989  loss: 0.0515  decode.loss_ce: 0.0515  decode.acc_seg: 98.9065
 2024/07/18 12:14:08 - mmengine - INFO - Iter(train) [ 1050/31250]  lr: 9.9938e-04  eta: 5:29:32  time: 0.6098  data_time: 0.0283  memory: 16989  loss: 0.0523  decode.loss_ce: 0.0523  decode.acc_seg: 96.8878
 2024/07/18 12:14:40 - mmengine - INFO - Iter(train) [ 1100/31250]  lr: 9.9875e-04  eta: 5:28:53  time: 0.6926  data_time: 0.0774  memory: 16989  loss: 0.0499  decode.loss_ce: 0.0499  decode.acc_seg: 98.6473
@@ -796,7 +796,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 12:22:45 - mmengine - INFO - Iter(train) [ 1850/31250]  lr: 9.8925e-04  eta: 5:19:01  time: 0.6951  data_time: 0.0540  memory: 16989  loss: 0.0417  decode.loss_ce: 0.0417  decode.acc_seg: 99.1706
 2024/07/18 12:23:17 - mmengine - INFO - Iter(train) [ 1900/31250]  lr: 9.8862e-04  eta: 5:18:21  time: 0.6498  data_time: 0.0668  memory: 16989  loss: 0.0395  decode.loss_ce: 0.0395  decode.acc_seg: 98.9240
 2024/07/18 12:23:50 - mmengine - INFO - Iter(train) [ 1950/31250]  lr: 9.8799e-04  eta: 5:18:06  time: 0.6719  data_time: 0.0965  memory: 16989  loss: 0.0428  decode.loss_ce: 0.0428  decode.acc_seg: 99.3438
-2024/07/18 12:24:23 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:24:23 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:24:23 - mmengine - INFO - Iter(train) [ 2000/31250]  lr: 9.8735e-04  eta: 5:17:40  time: 0.6814  data_time: 0.0711  memory: 16989  loss: 0.0444  decode.loss_ce: 0.0444  decode.acc_seg: 99.1224
 2024/07/18 12:24:56 - mmengine - INFO - Iter(train) [ 2050/31250]  lr: 9.8672e-04  eta: 5:17:07  time: 0.6470  data_time: 0.0891  memory: 16989  loss: 0.0430  decode.loss_ce: 0.0430  decode.acc_seg: 99.1692
 2024/07/18 12:25:28 - mmengine - INFO - Iter(train) [ 2100/31250]  lr: 9.8609e-04  eta: 5:16:27  time: 0.6326  data_time: 0.0393  memory: 16989  loss: 0.0391  decode.loss_ce: 0.0391  decode.acc_seg: 99.1345
@@ -817,7 +817,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 12:33:28 - mmengine - INFO - Iter(train) [ 2850/31250]  lr: 9.7659e-04  eta: 5:06:53  time: 0.6288  data_time: 0.0668  memory: 16989  loss: 0.0333  decode.loss_ce: 0.0333  decode.acc_seg: 99.3965
 2024/07/18 12:34:01 - mmengine - INFO - Iter(train) [ 2900/31250]  lr: 9.7596e-04  eta: 5:06:28  time: 0.6371  data_time: 0.0412  memory: 16989  loss: 0.0354  decode.loss_ce: 0.0354  decode.acc_seg: 98.7835
 2024/07/18 12:34:33 - mmengine - INFO - Iter(train) [ 2950/31250]  lr: 9.7533e-04  eta: 5:05:51  time: 0.6752  data_time: 0.1072  memory: 16989  loss: 0.0402  decode.loss_ce: 0.0402  decode.acc_seg: 97.2860
-2024/07/18 12:35:05 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:35:05 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:35:05 - mmengine - INFO - Iter(train) [ 3000/31250]  lr: 9.7470e-04  eta: 5:05:17  time: 0.6148  data_time: 0.0483  memory: 16989  loss: 0.0337  decode.loss_ce: 0.0337  decode.acc_seg: 98.8039
 2024/07/18 12:35:37 - mmengine - INFO - Iter(train) [ 3050/31250]  lr: 9.7406e-04  eta: 5:04:39  time: 0.6189  data_time: 0.0274  memory: 16989  loss: 0.0328  decode.loss_ce: 0.0328  decode.acc_seg: 99.0535
 2024/07/18 12:36:09 - mmengine - INFO - Iter(train) [ 3100/31250]  lr: 9.7343e-04  eta: 5:04:03  time: 0.6075  data_time: 0.0401  memory: 16989  loss: 0.0448  decode.loss_ce: 0.0448  decode.acc_seg: 99.5871
@@ -858,7 +858,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 12:46:41 - mmengine - INFO - Iter(train) [ 3850/31250]  lr: 9.6394e-04  eta: 4:55:18  time: 0.6192  data_time: 0.0309  memory: 16991  loss: 0.0327  decode.loss_ce: 0.0327  decode.acc_seg: 99.2327
 2024/07/18 12:47:13 - mmengine - INFO - Iter(train) [ 3900/31250]  lr: 9.6330e-04  eta: 4:54:43  time: 0.6694  data_time: 0.0677  memory: 16991  loss: 0.0357  decode.loss_ce: 0.0357  decode.acc_seg: 98.7122
 2024/07/18 12:47:45 - mmengine - INFO - Iter(train) [ 3950/31250]  lr: 9.6267e-04  eta: 4:54:11  time: 0.7214  data_time: 0.1237  memory: 16991  loss: 0.0347  decode.loss_ce: 0.0347  decode.acc_seg: 98.8860
-2024/07/18 12:48:18 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:48:18 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:48:18 - mmengine - INFO - Iter(train) [ 4000/31250]  lr: 9.6204e-04  eta: 4:53:41  time: 0.6335  data_time: 0.0341  memory: 16991  loss: 0.0377  decode.loss_ce: 0.0377  decode.acc_seg: 98.5177
 2024/07/18 12:48:51 - mmengine - INFO - Iter(train) [ 4050/31250]  lr: 9.6140e-04  eta: 4:53:12  time: 0.6504  data_time: 0.0680  memory: 16991  loss: 0.0356  decode.loss_ce: 0.0356  decode.acc_seg: 98.6959
 2024/07/18 12:49:24 - mmengine - INFO - Iter(train) [ 4100/31250]  lr: 9.6077e-04  eta: 4:52:46  time: 0.6793  data_time: 0.0934  memory: 16991  loss: 0.0389  decode.loss_ce: 0.0389  decode.acc_seg: 99.0416
@@ -879,7 +879,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 12:57:32 - mmengine - INFO - Iter(train) [ 4850/31250]  lr: 9.5128e-04  eta: 4:44:57  time: 0.6104  data_time: 0.0265  memory: 16991  loss: 0.0325  decode.loss_ce: 0.0325  decode.acc_seg: 98.7317
 2024/07/18 12:58:04 - mmengine - INFO - Iter(train) [ 4900/31250]  lr: 9.5064e-04  eta: 4:44:22  time: 0.6660  data_time: 0.0521  memory: 16991  loss: 0.0271  decode.loss_ce: 0.0271  decode.acc_seg: 99.0763
 2024/07/18 12:58:36 - mmengine - INFO - Iter(train) [ 4950/31250]  lr: 9.5001e-04  eta: 4:43:48  time: 0.6060  data_time: 0.0365  memory: 16991  loss: 0.0314  decode.loss_ce: 0.0314  decode.acc_seg: 98.8821
-2024/07/18 12:59:09 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 12:59:09 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 12:59:09 - mmengine - INFO - Iter(train) [ 5000/31250]  lr: 9.4938e-04  eta: 4:43:17  time: 0.6235  data_time: 0.0289  memory: 16991  loss: 0.0264  decode.loss_ce: 0.0264  decode.acc_seg: 99.5028
 2024/07/18 12:59:41 - mmengine - INFO - Iter(train) [ 5050/31250]  lr: 9.4875e-04  eta: 4:42:42  time: 0.5959  data_time: 0.0328  memory: 16991  loss: 0.0298  decode.loss_ce: 0.0298  decode.acc_seg: 98.9595
 2024/07/18 13:00:13 - mmengine - INFO - Iter(train) [ 5100/31250]  lr: 9.4811e-04  eta: 4:42:09  time: 0.6269  data_time: 0.0570  memory: 16991  loss: 0.0322  decode.loss_ce: 0.0322  decode.acc_seg: 99.5108
@@ -900,7 +900,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:08:13 - mmengine - INFO - Iter(train) [ 5850/31250]  lr: 9.3862e-04  eta: 4:33:38  time: 0.6190  data_time: 0.0372  memory: 16991  loss: 0.0282  decode.loss_ce: 0.0282  decode.acc_seg: 99.1787
 2024/07/18 13:08:46 - mmengine - INFO - Iter(train) [ 5900/31250]  lr: 9.3799e-04  eta: 4:33:08  time: 0.6722  data_time: 0.0872  memory: 16991  loss: 0.0349  decode.loss_ce: 0.0349  decode.acc_seg: 99.0796
 2024/07/18 13:09:18 - mmengine - INFO - Iter(train) [ 5950/31250]  lr: 9.3735e-04  eta: 4:32:35  time: 0.6402  data_time: 0.0498  memory: 16991  loss: 0.0301  decode.loss_ce: 0.0301  decode.acc_seg: 98.5943
-2024/07/18 13:09:51 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:09:51 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:09:51 - mmengine - INFO - Iter(train) [ 6000/31250]  lr: 9.3672e-04  eta: 4:32:05  time: 0.6326  data_time: 0.0544  memory: 16991  loss: 0.0380  decode.loss_ce: 0.0380  decode.acc_seg: 98.7802
 2024/07/18 13:10:23 - mmengine - INFO - Iter(train) [ 6050/31250]  lr: 9.3609e-04  eta: 4:31:33  time: 0.6173  data_time: 0.0384  memory: 16991  loss: 0.0290  decode.loss_ce: 0.0290  decode.acc_seg: 99.4929
 2024/07/18 13:10:55 - mmengine - INFO - Iter(train) [ 6100/31250]  lr: 9.3545e-04  eta: 4:30:58  time: 0.6249  data_time: 0.0512  memory: 16991  loss: 0.0286  decode.loss_ce: 0.0286  decode.acc_seg: 99.0368
@@ -926,7 +926,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 36.79  |   91.65   | 23.02  | 22.54 | 23.02 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 13:14:11 - mmengine - INFO - Iter(val) [500/500]    aAcc: 98.9200  mFscore: 68.1300  mPrecision: 95.3000  mRecall: 61.4900  mIoU: 60.7300  mAcc: 61.4900  data_time: 0.0106  time: 0.1959
-2024/07/18 13:14:11 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_3125.pth is removed
+2024/07/18 13:14:11 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_3125.pth is removed
 2024/07/18 13:14:11 - mmengine - INFO - The best checkpoint with 60.7300 mIoU at 6250 iter is saved to best_mIoU_iter_6250.pth.
 2024/07/18 13:14:42 - mmengine - INFO - Iter(train) [ 6300/31250]  lr: 9.3292e-04  eta: 4:28:49  time: 0.6303  data_time: 0.0313  memory: 16991  loss: 0.0265  decode.loss_ce: 0.0265  decode.acc_seg: 98.4301
 2024/07/18 13:15:15 - mmengine - INFO - Iter(train) [ 6350/31250]  lr: 9.3229e-04  eta: 4:28:18  time: 0.6437  data_time: 0.0307  memory: 16991  loss: 0.0285  decode.loss_ce: 0.0285  decode.acc_seg: 99.3348
@@ -942,7 +942,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:20:43 - mmengine - INFO - Iter(train) [ 6850/31250]  lr: 9.2596e-04  eta: 4:23:13  time: 0.6542  data_time: 0.0727  memory: 16991  loss: 0.0320  decode.loss_ce: 0.0320  decode.acc_seg: 98.2255
 2024/07/18 13:21:15 - mmengine - INFO - Iter(train) [ 6900/31250]  lr: 9.2533e-04  eta: 4:22:40  time: 0.6508  data_time: 0.0884  memory: 16991  loss: 0.0254  decode.loss_ce: 0.0254  decode.acc_seg: 98.5049
 2024/07/18 13:21:46 - mmengine - INFO - Iter(train) [ 6950/31250]  lr: 9.2470e-04  eta: 4:22:02  time: 0.5723  data_time: 0.0777  memory: 16991  loss: 0.0275  decode.loss_ce: 0.0275  decode.acc_seg: 99.2649
-2024/07/18 13:22:13 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:22:13 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:22:13 - mmengine - INFO - Iter(train) [ 7000/31250]  lr: 9.2406e-04  eta: 4:21:10  time: 0.5319  data_time: 0.0398  memory: 16991  loss: 0.0312  decode.loss_ce: 0.0312  decode.acc_seg: 99.3893
 2024/07/18 13:22:39 - mmengine - INFO - Iter(train) [ 7050/31250]  lr: 9.2343e-04  eta: 4:20:18  time: 0.5422  data_time: 0.0499  memory: 16991  loss: 0.0344  decode.loss_ce: 0.0344  decode.acc_seg: 99.4327
 2024/07/18 13:23:06 - mmengine - INFO - Iter(train) [ 7100/31250]  lr: 9.2280e-04  eta: 4:19:27  time: 0.5335  data_time: 0.0354  memory: 16991  loss: 0.0250  decode.loss_ce: 0.0250  decode.acc_seg: 98.9116
@@ -963,7 +963,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:29:47 - mmengine - INFO - Iter(train) [ 7850/31250]  lr: 9.1330e-04  eta: 4:07:18  time: 0.5454  data_time: 0.0511  memory: 16991  loss: 0.0254  decode.loss_ce: 0.0254  decode.acc_seg: 98.9629
 2024/07/18 13:30:14 - mmengine - INFO - Iter(train) [ 7900/31250]  lr: 9.1267e-04  eta: 4:06:31  time: 0.5291  data_time: 0.0313  memory: 16991  loss: 0.0291  decode.loss_ce: 0.0291  decode.acc_seg: 98.8630
 2024/07/18 13:30:41 - mmengine - INFO - Iter(train) [ 7950/31250]  lr: 9.1204e-04  eta: 4:05:45  time: 0.5351  data_time: 0.0398  memory: 16991  loss: 0.0268  decode.loss_ce: 0.0268  decode.acc_seg: 99.2521
-2024/07/18 13:31:07 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:31:07 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:31:07 - mmengine - INFO - Iter(train) [ 8000/31250]  lr: 9.1140e-04  eta: 4:05:00  time: 0.5160  data_time: 0.0220  memory: 16991  loss: 0.0287  decode.loss_ce: 0.0287  decode.acc_seg: 99.1166
 2024/07/18 13:31:07 - mmengine - INFO - Saving checkpoint at 8000 iterations
 2024/07/18 13:31:35 - mmengine - INFO - Iter(train) [ 8050/31250]  lr: 9.1077e-04  eta: 4:04:16  time: 0.5273  data_time: 0.0364  memory: 16991  loss: 0.0285  decode.loss_ce: 0.0285  decode.acc_seg: 98.6091
@@ -985,7 +985,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:38:43 - mmengine - INFO - Iter(train) [ 8850/31250]  lr: 9.0064e-04  eta: 3:52:34  time: 0.5135  data_time: 0.0183  memory: 16991  loss: 0.0286  decode.loss_ce: 0.0286  decode.acc_seg: 99.2838
 2024/07/18 13:39:09 - mmengine - INFO - Iter(train) [ 8900/31250]  lr: 9.0001e-04  eta: 3:51:52  time: 0.5794  data_time: 0.0839  memory: 16991  loss: 0.0262  decode.loss_ce: 0.0262  decode.acc_seg: 99.1257
 2024/07/18 13:39:36 - mmengine - INFO - Iter(train) [ 8950/31250]  lr: 8.9938e-04  eta: 3:51:09  time: 0.5165  data_time: 0.0198  memory: 16991  loss: 0.0278  decode.loss_ce: 0.0278  decode.acc_seg: 99.4640
-2024/07/18 13:40:03 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:40:03 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:40:03 - mmengine - INFO - Iter(train) [ 9000/31250]  lr: 8.9875e-04  eta: 3:50:28  time: 0.5785  data_time: 0.0812  memory: 16991  loss: 0.0269  decode.loss_ce: 0.0269  decode.acc_seg: 99.2514
 2024/07/18 13:40:30 - mmengine - INFO - Iter(train) [ 9050/31250]  lr: 8.9811e-04  eta: 3:49:46  time: 0.5401  data_time: 0.0469  memory: 16991  loss: 0.0274  decode.loss_ce: 0.0274  decode.acc_seg: 99.3758
 2024/07/18 13:40:56 - mmengine - INFO - Iter(train) [ 9100/31250]  lr: 8.9748e-04  eta: 3:49:04  time: 0.5328  data_time: 0.0335  memory: 16991  loss: 0.0271  decode.loss_ce: 0.0271  decode.acc_seg: 99.2632
@@ -1013,7 +1013,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 47.94  |   85.99   | 33.23  | 31.52 | 33.23 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 13:43:59 - mmengine - INFO - Iter(val) [500/500]    aAcc: 99.0200  mFscore: 73.7200  mPrecision: 92.5400  mRecall: 66.5800  mIoU: 65.2700  mAcc: 66.5800  data_time: 0.0409  time: 0.0704
-2024/07/18 13:43:59 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_6250.pth is removed
+2024/07/18 13:43:59 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_6250.pth is removed
 2024/07/18 13:43:59 - mmengine - INFO - The best checkpoint with 65.2700 mIoU at 9375 iter is saved to best_mIoU_iter_9375.pth.
 2024/07/18 13:44:13 - mmengine - INFO - Iter(train) [ 9400/31250]  lr: 8.9368e-04  eta: 3:45:01  time: 0.5497  data_time: 0.0469  memory: 16991  loss: 0.0257  decode.loss_ce: 0.0257  decode.acc_seg: 99.0363
 2024/07/18 13:44:40 - mmengine - INFO - Iter(train) [ 9450/31250]  lr: 8.9305e-04  eta: 3:44:21  time: 0.5448  data_time: 0.0517  memory: 16991  loss: 0.0289  decode.loss_ce: 0.0289  decode.acc_seg: 99.2550
@@ -1027,7 +1027,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:48:13 - mmengine - INFO - Iter(train) [ 9850/31250]  lr: 8.8799e-04  eta: 3:39:01  time: 0.5171  data_time: 0.0175  memory: 16991  loss: 0.0257  decode.loss_ce: 0.0257  decode.acc_seg: 99.4558
 2024/07/18 13:48:40 - mmengine - INFO - Iter(train) [ 9900/31250]  lr: 8.8735e-04  eta: 3:38:21  time: 0.5307  data_time: 0.0346  memory: 16991  loss: 0.0269  decode.loss_ce: 0.0269  decode.acc_seg: 99.4641
 2024/07/18 13:49:06 - mmengine - INFO - Iter(train) [ 9950/31250]  lr: 8.8672e-04  eta: 3:37:41  time: 0.5138  data_time: 0.0235  memory: 16991  loss: 0.0233  decode.loss_ce: 0.0233  decode.acc_seg: 99.0637
-2024/07/18 13:49:33 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:49:33 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:49:33 - mmengine - INFO - Iter(train) [10000/31250]  lr: 8.8609e-04  eta: 3:37:03  time: 0.5188  data_time: 0.0186  memory: 16991  loss: 0.0251  decode.loss_ce: 0.0251  decode.acc_seg: 99.1599
 2024/07/18 13:50:00 - mmengine - INFO - Iter(train) [10050/31250]  lr: 8.8545e-04  eta: 3:36:25  time: 0.5955  data_time: 0.1025  memory: 16991  loss: 0.0299  decode.loss_ce: 0.0299  decode.acc_seg: 99.2422
 2024/07/18 13:50:27 - mmengine - INFO - Iter(train) [10100/31250]  lr: 8.8482e-04  eta: 3:35:46  time: 0.5145  data_time: 0.0162  memory: 16991  loss: 0.0320  decode.loss_ce: 0.0320  decode.acc_seg: 99.1357
@@ -1048,7 +1048,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 13:57:09 - mmengine - INFO - Iter(train) [10850/31250]  lr: 8.7533e-04  eta: 3:26:19  time: 0.5517  data_time: 0.0588  memory: 16991  loss: 0.0247  decode.loss_ce: 0.0247  decode.acc_seg: 99.0598
 2024/07/18 13:57:36 - mmengine - INFO - Iter(train) [10900/31250]  lr: 8.7469e-04  eta: 3:25:42  time: 0.5439  data_time: 0.0487  memory: 16991  loss: 0.0248  decode.loss_ce: 0.0248  decode.acc_seg: 99.4770
 2024/07/18 13:58:03 - mmengine - INFO - Iter(train) [10950/31250]  lr: 8.7406e-04  eta: 3:25:05  time: 0.5390  data_time: 0.0405  memory: 16991  loss: 0.0219  decode.loss_ce: 0.0219  decode.acc_seg: 99.4040
-2024/07/18 13:58:29 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 13:58:29 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 13:58:29 - mmengine - INFO - Iter(train) [11000/31250]  lr: 8.7343e-04  eta: 3:24:28  time: 0.5397  data_time: 0.0505  memory: 16991  loss: 0.0264  decode.loss_ce: 0.0264  decode.acc_seg: 98.8148
 2024/07/18 13:58:56 - mmengine - INFO - Iter(train) [11050/31250]  lr: 8.7280e-04  eta: 3:23:51  time: 0.5275  data_time: 0.0376  memory: 16991  loss: 0.0262  decode.loss_ce: 0.0262  decode.acc_seg: 98.7559
 2024/07/18 13:59:23 - mmengine - INFO - Iter(train) [11100/31250]  lr: 8.7216e-04  eta: 3:23:15  time: 0.5255  data_time: 0.0338  memory: 16991  loss: 0.0211  decode.loss_ce: 0.0211  decode.acc_seg: 99.1261
@@ -1069,7 +1069,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:06:05 - mmengine - INFO - Iter(train) [11850/31250]  lr: 8.6267e-04  eta: 3:14:16  time: 0.5544  data_time: 0.0571  memory: 16991  loss: 0.0237  decode.loss_ce: 0.0237  decode.acc_seg: 99.1736
 2024/07/18 14:06:32 - mmengine - INFO - Iter(train) [11900/31250]  lr: 8.6204e-04  eta: 3:13:41  time: 0.5200  data_time: 0.0209  memory: 16991  loss: 0.0253  decode.loss_ce: 0.0253  decode.acc_seg: 99.3957
 2024/07/18 14:06:59 - mmengine - INFO - Iter(train) [11950/31250]  lr: 8.6140e-04  eta: 3:13:06  time: 0.5150  data_time: 0.0174  memory: 16991  loss: 0.0218  decode.loss_ce: 0.0218  decode.acc_seg: 98.9813
-2024/07/18 14:07:25 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:07:25 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:07:25 - mmengine - INFO - Iter(train) [12000/31250]  lr: 8.6077e-04  eta: 3:12:30  time: 0.5168  data_time: 0.0187  memory: 16991  loss: 0.0205  decode.loss_ce: 0.0205  decode.acc_seg: 99.5503
 2024/07/18 14:07:52 - mmengine - INFO - Iter(train) [12050/31250]  lr: 8.6014e-04  eta: 3:11:56  time: 0.5303  data_time: 0.0349  memory: 16991  loss: 0.0249  decode.loss_ce: 0.0249  decode.acc_seg: 99.0169
 2024/07/18 14:08:19 - mmengine - INFO - Iter(train) [12100/31250]  lr: 8.5950e-04  eta: 3:11:21  time: 0.5562  data_time: 0.0578  memory: 16991  loss: 0.0247  decode.loss_ce: 0.0247  decode.acc_seg: 99.0120
@@ -1100,7 +1100,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 47.99  |   88.67   |  32.9  | 31.57 |  32.9 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 14:12:28 - mmengine - INFO - Iter(val) [500/500]    aAcc: 99.0300  mFscore: 73.7500  mPrecision: 93.8800  mRecall: 66.4200  mIoU: 65.3000  mAcc: 66.4200  data_time: 0.0411  time: 0.0708
-2024/07/18 14:12:28 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_9375.pth is removed
+2024/07/18 14:12:28 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_9375.pth is removed
 2024/07/18 14:12:29 - mmengine - INFO - The best checkpoint with 65.3000 mIoU at 12500 iter is saved to best_mIoU_iter_12500.pth.
 2024/07/18 14:12:56 - mmengine - INFO - Iter(train) [12550/31250]  lr: 8.5381e-04  eta: 3:06:08  time: 0.5448  data_time: 0.0512  memory: 16991  loss: 0.0209  decode.loss_ce: 0.0209  decode.acc_seg: 99.1361
 2024/07/18 14:13:22 - mmengine - INFO - Iter(train) [12600/31250]  lr: 8.5318e-04  eta: 3:05:34  time: 0.5428  data_time: 0.0462  memory: 16991  loss: 0.0197  decode.loss_ce: 0.0197  decode.acc_seg: 99.3809
@@ -1111,7 +1111,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:15:36 - mmengine - INFO - Iter(train) [12850/31250]  lr: 8.5001e-04  eta: 3:02:42  time: 0.5064  data_time: 0.0248  memory: 16991  loss: 0.0261  decode.loss_ce: 0.0261  decode.acc_seg: 99.3387
 2024/07/18 14:16:02 - mmengine - INFO - Iter(train) [12900/31250]  lr: 8.4938e-04  eta: 3:02:07  time: 0.5129  data_time: 0.0223  memory: 16991  loss: 0.0220  decode.loss_ce: 0.0220  decode.acc_seg: 99.1202
 2024/07/18 14:16:29 - mmengine - INFO - Iter(train) [12950/31250]  lr: 8.4874e-04  eta: 3:01:33  time: 0.5418  data_time: 0.0409  memory: 16991  loss: 0.0240  decode.loss_ce: 0.0240  decode.acc_seg: 99.4698
-2024/07/18 14:16:56 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:16:56 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:16:56 - mmengine - INFO - Iter(train) [13000/31250]  lr: 8.4811e-04  eta: 3:01:00  time: 0.5392  data_time: 0.0442  memory: 16991  loss: 0.0236  decode.loss_ce: 0.0236  decode.acc_seg: 99.1748
 2024/07/18 14:17:23 - mmengine - INFO - Iter(train) [13050/31250]  lr: 8.4748e-04  eta: 3:00:26  time: 0.5403  data_time: 0.0502  memory: 16991  loss: 0.0265  decode.loss_ce: 0.0265  decode.acc_seg: 99.2827
 2024/07/18 14:17:50 - mmengine - INFO - Iter(train) [13100/31250]  lr: 8.4685e-04  eta: 2:59:52  time: 0.5415  data_time: 0.0448  memory: 16991  loss: 0.0238  decode.loss_ce: 0.0238  decode.acc_seg: 99.3327
@@ -1132,7 +1132,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:24:32 - mmengine - INFO - Iter(train) [13850/31250]  lr: 8.3735e-04  eta: 2:51:31  time: 0.5242  data_time: 0.0219  memory: 16991  loss: 0.0204  decode.loss_ce: 0.0204  decode.acc_seg: 99.4206
 2024/07/18 14:24:59 - mmengine - INFO - Iter(train) [13900/31250]  lr: 8.3672e-04  eta: 2:50:59  time: 0.5759  data_time: 0.0819  memory: 16991  loss: 0.0192  decode.loss_ce: 0.0192  decode.acc_seg: 99.4904
 2024/07/18 14:25:26 - mmengine - INFO - Iter(train) [13950/31250]  lr: 8.3609e-04  eta: 2:50:26  time: 0.5569  data_time: 0.0595  memory: 16991  loss: 0.0269  decode.loss_ce: 0.0269  decode.acc_seg: 99.6478
-2024/07/18 14:25:53 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:25:53 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:25:53 - mmengine - INFO - Iter(train) [14000/31250]  lr: 8.3545e-04  eta: 2:49:53  time: 0.5361  data_time: 0.0336  memory: 16991  loss: 0.0235  decode.loss_ce: 0.0235  decode.acc_seg: 99.3316
 2024/07/18 14:26:20 - mmengine - INFO - Iter(train) [14050/31250]  lr: 8.3482e-04  eta: 2:49:20  time: 0.5503  data_time: 0.0550  memory: 16991  loss: 0.0206  decode.loss_ce: 0.0206  decode.acc_seg: 99.2173
 2024/07/18 14:26:46 - mmengine - INFO - Iter(train) [14100/31250]  lr: 8.3419e-04  eta: 2:48:47  time: 0.5287  data_time: 0.0312  memory: 16991  loss: 0.0284  decode.loss_ce: 0.0284  decode.acc_seg: 99.3059
@@ -1153,7 +1153,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:33:30 - mmengine - INFO - Iter(train) [14850/31250]  lr: 8.2469e-04  eta: 2:40:40  time: 0.5227  data_time: 0.0245  memory: 16991  loss: 0.0220  decode.loss_ce: 0.0220  decode.acc_seg: 98.9213
 2024/07/18 14:33:57 - mmengine - INFO - Iter(train) [14900/31250]  lr: 8.2406e-04  eta: 2:40:08  time: 0.5257  data_time: 0.0329  memory: 16991  loss: 0.0219  decode.loss_ce: 0.0219  decode.acc_seg: 99.3259
 2024/07/18 14:34:24 - mmengine - INFO - Iter(train) [14950/31250]  lr: 8.2343e-04  eta: 2:39:36  time: 0.5374  data_time: 0.0434  memory: 16991  loss: 0.0248  decode.loss_ce: 0.0248  decode.acc_seg: 99.4663
-2024/07/18 14:34:51 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:34:51 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:34:51 - mmengine - INFO - Iter(train) [15000/31250]  lr: 8.2280e-04  eta: 2:39:04  time: 0.5321  data_time: 0.0338  memory: 16991  loss: 0.0211  decode.loss_ce: 0.0211  decode.acc_seg: 99.1027
 2024/07/18 14:35:18 - mmengine - INFO - Iter(train) [15050/31250]  lr: 8.2216e-04  eta: 2:38:32  time: 0.5560  data_time: 0.0572  memory: 16991  loss: 0.0230  decode.loss_ce: 0.0230  decode.acc_seg: 99.0955
 2024/07/18 14:35:45 - mmengine - INFO - Iter(train) [15100/31250]  lr: 8.2153e-04  eta: 2:38:01  time: 0.5226  data_time: 0.0292  memory: 16991  loss: 0.0197  decode.loss_ce: 0.0197  decode.acc_seg: 99.1594
@@ -1186,7 +1186,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 51.03  |   87.16   | 36.08  | 34.26 | 36.08 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 14:41:42 - mmengine - INFO - Iter(val) [500/500]    aAcc: 99.0600  mFscore: 75.2800  mPrecision: 93.1400  mRecall: 68.0000  mIoU: 66.6600  mAcc: 68.0000  data_time: 0.0256  time: 0.1293
-2024/07/18 14:41:42 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_12500.pth is removed
+2024/07/18 14:41:42 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_12500.pth is removed
 2024/07/18 14:41:43 - mmengine - INFO - The best checkpoint with 66.6600 mIoU at 15625 iter is saved to best_mIoU_iter_15625.pth.
 2024/07/18 14:41:58 - mmengine - INFO - Iter(train) [15650/31250]  lr: 8.1457e-04  eta: 2:32:23  time: 0.6128  data_time: 0.0318  memory: 16991  loss: 0.0240  decode.loss_ce: 0.0240  decode.acc_seg: 99.5549
 2024/07/18 14:42:29 - mmengine - INFO - Iter(train) [15700/31250]  lr: 8.1393e-04  eta: 2:31:56  time: 0.5922  data_time: 0.0354  memory: 16991  loss: 0.0246  decode.loss_ce: 0.0246  decode.acc_seg: 99.0283
@@ -1195,7 +1195,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:43:52 - mmengine - INFO - Iter(train) [15850/31250]  lr: 8.1204e-04  eta: 2:30:22  time: 0.5712  data_time: 0.0827  memory: 16991  loss: 0.0253  decode.loss_ce: 0.0253  decode.acc_seg: 98.9381
 2024/07/18 14:44:19 - mmengine - INFO - Iter(train) [15900/31250]  lr: 8.1140e-04  eta: 2:29:51  time: 0.5502  data_time: 0.0261  memory: 16991  loss: 0.0208  decode.loss_ce: 0.0208  decode.acc_seg: 99.4173
 2024/07/18 14:44:46 - mmengine - INFO - Iter(train) [15950/31250]  lr: 8.1077e-04  eta: 2:29:20  time: 0.5704  data_time: 0.0803  memory: 16991  loss: 0.0205  decode.loss_ce: 0.0205  decode.acc_seg: 99.0903
-2024/07/18 14:45:14 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:45:14 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:45:14 - mmengine - INFO - Iter(train) [16000/31250]  lr: 8.1014e-04  eta: 2:28:49  time: 0.5198  data_time: 0.0226  memory: 16991  loss: 0.0212  decode.loss_ce: 0.0212  decode.acc_seg: 99.3681
 2024/07/18 14:45:14 - mmengine - INFO - Saving checkpoint at 16000 iterations
 2024/07/18 14:45:42 - mmengine - INFO - Iter(train) [16050/31250]  lr: 8.0950e-04  eta: 2:28:18  time: 0.5444  data_time: 0.0444  memory: 16991  loss: 0.0246  decode.loss_ce: 0.0246  decode.acc_seg: 99.3149
@@ -1217,7 +1217,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 14:52:59 - mmengine - INFO - Iter(train) [16850/31250]  lr: 7.9938e-04  eta: 2:20:04  time: 0.5436  data_time: 0.0230  memory: 16991  loss: 0.0189  decode.loss_ce: 0.0189  decode.acc_seg: 99.5751
 2024/07/18 14:53:27 - mmengine - INFO - Iter(train) [16900/31250]  lr: 7.9874e-04  eta: 2:19:34  time: 0.5512  data_time: 0.0270  memory: 16991  loss: 0.0219  decode.loss_ce: 0.0219  decode.acc_seg: 99.1977
 2024/07/18 14:53:54 - mmengine - INFO - Iter(train) [16950/31250]  lr: 7.9811e-04  eta: 2:19:03  time: 0.5895  data_time: 0.0802  memory: 16991  loss: 0.0208  decode.loss_ce: 0.0208  decode.acc_seg: 99.2326
-2024/07/18 14:54:22 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 14:54:22 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 14:54:22 - mmengine - INFO - Iter(train) [17000/31250]  lr: 7.9748e-04  eta: 2:18:32  time: 0.5707  data_time: 0.0377  memory: 16991  loss: 0.0207  decode.loss_ce: 0.0207  decode.acc_seg: 99.4142
 2024/07/18 14:54:51 - mmengine - INFO - Iter(train) [17050/31250]  lr: 7.9685e-04  eta: 2:18:03  time: 0.5815  data_time: 0.0487  memory: 16991  loss: 0.0198  decode.loss_ce: 0.0198  decode.acc_seg: 99.3209
 2024/07/18 14:55:18 - mmengine - INFO - Iter(train) [17100/31250]  lr: 7.9621e-04  eta: 2:17:32  time: 0.5227  data_time: 0.0194  memory: 16991  loss: 0.0223  decode.loss_ce: 0.0223  decode.acc_seg: 99.1661
@@ -1238,7 +1238,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 15:02:23 - mmengine - INFO - Iter(train) [17850/31250]  lr: 7.8672e-04  eta: 2:10:05  time: 0.5499  data_time: 0.0241  memory: 16991  loss: 0.0188  decode.loss_ce: 0.0188  decode.acc_seg: 99.4702
 2024/07/18 15:02:51 - mmengine - INFO - Iter(train) [17900/31250]  lr: 7.8609e-04  eta: 2:09:35  time: 0.5380  data_time: 0.0309  memory: 16991  loss: 0.0178  decode.loss_ce: 0.0178  decode.acc_seg: 98.9629
 2024/07/18 15:03:20 - mmengine - INFO - Iter(train) [17950/31250]  lr: 7.8545e-04  eta: 2:09:06  time: 0.6018  data_time: 0.0672  memory: 16991  loss: 0.0185  decode.loss_ce: 0.0185  decode.acc_seg: 99.1814
-2024/07/18 15:03:48 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:03:48 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:03:48 - mmengine - INFO - Iter(train) [18000/31250]  lr: 7.8482e-04  eta: 2:08:36  time: 0.5892  data_time: 0.0831  memory: 16991  loss: 0.0193  decode.loss_ce: 0.0193  decode.acc_seg: 99.3487
 2024/07/18 15:04:16 - mmengine - INFO - Iter(train) [18050/31250]  lr: 7.8419e-04  eta: 2:08:06  time: 0.5609  data_time: 0.0352  memory: 16991  loss: 0.0190  decode.loss_ce: 0.0190  decode.acc_seg: 99.4178
 2024/07/18 15:04:45 - mmengine - INFO - Iter(train) [18100/31250]  lr: 7.8355e-04  eta: 2:07:37  time: 0.5692  data_time: 0.0696  memory: 16991  loss: 0.0208  decode.loss_ce: 0.0208  decode.acc_seg: 99.4686
@@ -1278,7 +1278,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 15:12:52 - mmengine - INFO - Iter(train) [18850/31250]  lr: 7.7406e-04  eta: 2:00:13  time: 0.5333  data_time: 0.0197  memory: 16991  loss: 0.0198  decode.loss_ce: 0.0198  decode.acc_seg: 99.2810
 2024/07/18 15:13:20 - mmengine - INFO - Iter(train) [18900/31250]  lr: 7.7343e-04  eta: 1:59:43  time: 0.6451  data_time: 0.1269  memory: 16991  loss: 0.0218  decode.loss_ce: 0.0218  decode.acc_seg: 99.0183
 2024/07/18 15:13:49 - mmengine - INFO - Iter(train) [18950/31250]  lr: 7.7279e-04  eta: 1:59:14  time: 0.5950  data_time: 0.0675  memory: 16991  loss: 0.0181  decode.loss_ce: 0.0181  decode.acc_seg: 99.2159
-2024/07/18 15:14:18 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:14:18 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:14:18 - mmengine - INFO - Iter(train) [19000/31250]  lr: 7.7216e-04  eta: 1:58:45  time: 0.5308  data_time: 0.0194  memory: 16991  loss: 0.0191  decode.loss_ce: 0.0191  decode.acc_seg: 99.2656
 2024/07/18 15:14:45 - mmengine - INFO - Iter(train) [19050/31250]  lr: 7.7153e-04  eta: 1:58:15  time: 0.5378  data_time: 0.0333  memory: 16991  loss: 0.0210  decode.loss_ce: 0.0210  decode.acc_seg: 99.6412
 2024/07/18 15:15:14 - mmengine - INFO - Iter(train) [19100/31250]  lr: 7.7090e-04  eta: 1:57:46  time: 0.5882  data_time: 0.0621  memory: 16991  loss: 0.0220  decode.loss_ce: 0.0220  decode.acc_seg: 99.4524
@@ -1299,7 +1299,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 15:22:21 - mmengine - INFO - Iter(train) [19850/31250]  lr: 7.6140e-04  eta: 1:50:24  time: 0.5383  data_time: 0.0277  memory: 16991  loss: 0.0175  decode.loss_ce: 0.0175  decode.acc_seg: 99.1919
 2024/07/18 15:22:50 - mmengine - INFO - Iter(train) [19900/31250]  lr: 7.6077e-04  eta: 1:49:55  time: 0.5624  data_time: 0.0578  memory: 16991  loss: 0.0224  decode.loss_ce: 0.0224  decode.acc_seg: 98.9051
 2024/07/18 15:23:18 - mmengine - INFO - Iter(train) [19950/31250]  lr: 7.6014e-04  eta: 1:49:25  time: 0.5738  data_time: 0.0248  memory: 16991  loss: 0.0189  decode.loss_ce: 0.0189  decode.acc_seg: 99.1458
-2024/07/18 15:23:49 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:23:49 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:23:49 - mmengine - INFO - Iter(train) [20000/31250]  lr: 7.5950e-04  eta: 1:48:57  time: 0.5939  data_time: 0.0627  memory: 16991  loss: 0.0229  decode.loss_ce: 0.0229  decode.acc_seg: 99.3561
 2024/07/18 15:24:18 - mmengine - INFO - Iter(train) [20050/31250]  lr: 7.5887e-04  eta: 1:48:28  time: 0.5613  data_time: 0.0569  memory: 16991  loss: 0.0190  decode.loss_ce: 0.0190  decode.acc_seg: 99.2868
 2024/07/18 15:24:46 - mmengine - INFO - Iter(train) [20100/31250]  lr: 7.5824e-04  eta: 1:47:59  time: 0.5492  data_time: 0.0237  memory: 16991  loss: 0.0220  decode.loss_ce: 0.0220  decode.acc_seg: 98.9443
@@ -1320,7 +1320,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 15:31:55 - mmengine - INFO - Iter(train) [20850/31250]  lr: 7.4874e-04  eta: 1:40:39  time: 0.5139  data_time: 0.0200  memory: 16991  loss: 0.0221  decode.loss_ce: 0.0221  decode.acc_seg: 99.3570
 2024/07/18 15:32:25 - mmengine - INFO - Iter(train) [20900/31250]  lr: 7.4811e-04  eta: 1:40:11  time: 0.5685  data_time: 0.0230  memory: 16991  loss: 0.0185  decode.loss_ce: 0.0185  decode.acc_seg: 99.3821
 2024/07/18 15:32:53 - mmengine - INFO - Iter(train) [20950/31250]  lr: 7.4748e-04  eta: 1:39:41  time: 0.5704  data_time: 0.0476  memory: 16991  loss: 0.0187  decode.loss_ce: 0.0187  decode.acc_seg: 99.1358
-2024/07/18 15:33:22 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:33:22 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:33:22 - mmengine - INFO - Iter(train) [21000/31250]  lr: 7.4684e-04  eta: 1:39:12  time: 0.5576  data_time: 0.0379  memory: 16991  loss: 0.0174  decode.loss_ce: 0.0174  decode.acc_seg: 99.3857
 2024/07/18 15:33:50 - mmengine - INFO - Iter(train) [21050/31250]  lr: 7.4621e-04  eta: 1:38:43  time: 0.6083  data_time: 0.0966  memory: 16991  loss: 0.0198  decode.loss_ce: 0.0198  decode.acc_seg: 99.3738
 2024/07/18 15:34:19 - mmengine - INFO - Iter(train) [21100/31250]  lr: 7.4558e-04  eta: 1:38:14  time: 0.5541  data_time: 0.0249  memory: 16991  loss: 0.0190  decode.loss_ce: 0.0190  decode.acc_seg: 99.1709
@@ -1358,11 +1358,11 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 51.25  |   68.48   | 40.95  | 34.45 | 40.95 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 15:42:43 - mmengine - INFO - Iter(val) [500/500]    aAcc: 98.9400  mFscore: 75.3600  mPrecision: 83.8300  mRecall: 70.3400  mIoU: 66.6900  mAcc: 70.3400  data_time: 0.0144  time: 0.1193
-2024/07/18 15:42:43 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_15625.pth is removed
+2024/07/18 15:42:43 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_15625.pth is removed
 2024/07/18 15:42:43 - mmengine - INFO - The best checkpoint with 66.6900 mIoU at 21875 iter is saved to best_mIoU_iter_21875.pth.
 2024/07/18 15:42:59 - mmengine - INFO - Iter(train) [21900/31250]  lr: 7.3545e-04  eta: 1:30:27  time: 0.5696  data_time: 0.0515  memory: 16991  loss: 0.0170  decode.loss_ce: 0.0170  decode.acc_seg: 99.6759
 2024/07/18 15:43:27 - mmengine - INFO - Iter(train) [21950/31250]  lr: 7.3482e-04  eta: 1:29:58  time: 0.5578  data_time: 0.0434  memory: 16991  loss: 0.0184  decode.loss_ce: 0.0184  decode.acc_seg: 99.3939
-2024/07/18 15:43:56 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:43:56 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:43:56 - mmengine - INFO - Iter(train) [22000/31250]  lr: 7.3419e-04  eta: 1:29:29  time: 0.5712  data_time: 0.0665  memory: 16991  loss: 0.0168  decode.loss_ce: 0.0168  decode.acc_seg: 99.4531
 2024/07/18 15:44:24 - mmengine - INFO - Iter(train) [22050/31250]  lr: 7.3355e-04  eta: 1:28:59  time: 0.5736  data_time: 0.0344  memory: 16991  loss: 0.0195  decode.loss_ce: 0.0195  decode.acc_seg: 99.2866
 2024/07/18 15:44:53 - mmengine - INFO - Iter(train) [22100/31250]  lr: 7.3292e-04  eta: 1:28:30  time: 0.5691  data_time: 0.0298  memory: 16991  loss: 0.0180  decode.loss_ce: 0.0180  decode.acc_seg: 99.4613
@@ -1383,7 +1383,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 15:52:02 - mmengine - INFO - Iter(train) [22850/31250]  lr: 7.2343e-04  eta: 1:21:13  time: 0.5875  data_time: 0.0508  memory: 16991  loss: 0.0194  decode.loss_ce: 0.0194  decode.acc_seg: 99.4858
 2024/07/18 15:52:31 - mmengine - INFO - Iter(train) [22900/31250]  lr: 7.2279e-04  eta: 1:20:44  time: 0.6114  data_time: 0.0575  memory: 16991  loss: 0.0189  decode.loss_ce: 0.0189  decode.acc_seg: 99.6029
 2024/07/18 15:53:00 - mmengine - INFO - Iter(train) [22950/31250]  lr: 7.2216e-04  eta: 1:20:14  time: 0.5854  data_time: 0.0563  memory: 16991  loss: 0.0170  decode.loss_ce: 0.0170  decode.acc_seg: 99.5837
-2024/07/18 15:53:28 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 15:53:28 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 15:53:28 - mmengine - INFO - Iter(train) [23000/31250]  lr: 7.2153e-04  eta: 1:19:45  time: 0.5665  data_time: 0.0440  memory: 16991  loss: 0.0189  decode.loss_ce: 0.0189  decode.acc_seg: 99.5360
 2024/07/18 15:53:56 - mmengine - INFO - Iter(train) [23050/31250]  lr: 7.2090e-04  eta: 1:19:16  time: 0.5727  data_time: 0.0595  memory: 16991  loss: 0.0211  decode.loss_ce: 0.0211  decode.acc_seg: 99.3490
 2024/07/18 15:54:25 - mmengine - INFO - Iter(train) [23100/31250]  lr: 7.2026e-04  eta: 1:18:47  time: 0.5992  data_time: 0.0628  memory: 16991  loss: 0.0183  decode.loss_ce: 0.0183  decode.acc_seg: 99.3339
@@ -1404,7 +1404,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:01:35 - mmengine - INFO - Iter(train) [23850/31250]  lr: 7.1077e-04  eta: 1:11:30  time: 0.6059  data_time: 0.0775  memory: 16991  loss: 0.0174  decode.loss_ce: 0.0174  decode.acc_seg: 99.5349
 2024/07/18 16:02:04 - mmengine - INFO - Iter(train) [23900/31250]  lr: 7.1014e-04  eta: 1:11:01  time: 0.5909  data_time: 0.0848  memory: 16991  loss: 0.0199  decode.loss_ce: 0.0199  decode.acc_seg: 99.0734
 2024/07/18 16:02:33 - mmengine - INFO - Iter(train) [23950/31250]  lr: 7.0950e-04  eta: 1:10:32  time: 0.5678  data_time: 0.0423  memory: 16991  loss: 0.0202  decode.loss_ce: 0.0202  decode.acc_seg: 99.4722
-2024/07/18 16:03:01 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:03:01 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:03:01 - mmengine - INFO - Iter(train) [24000/31250]  lr: 7.0887e-04  eta: 1:10:03  time: 0.5682  data_time: 0.0650  memory: 16991  loss: 0.0190  decode.loss_ce: 0.0190  decode.acc_seg: 98.9121
 2024/07/18 16:03:01 - mmengine - INFO - Saving checkpoint at 24000 iterations
 2024/07/18 16:03:31 - mmengine - INFO - Iter(train) [24050/31250]  lr: 7.0824e-04  eta: 1:09:34  time: 0.5948  data_time: 0.0697  memory: 16991  loss: 0.0167  decode.loss_ce: 0.0167  decode.acc_seg: 99.3435
@@ -1426,7 +1426,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:11:09 - mmengine - INFO - Iter(train) [24850/31250]  lr: 6.9811e-04  eta: 1:01:49  time: 0.5408  data_time: 0.0279  memory: 16991  loss: 0.0170  decode.loss_ce: 0.0170  decode.acc_seg: 99.6003
 2024/07/18 16:11:38 - mmengine - INFO - Iter(train) [24900/31250]  lr: 6.9748e-04  eta: 1:01:20  time: 0.5695  data_time: 0.0482  memory: 16991  loss: 0.0177  decode.loss_ce: 0.0177  decode.acc_seg: 98.9469
 2024/07/18 16:12:06 - mmengine - INFO - Iter(train) [24950/31250]  lr: 6.9684e-04  eta: 1:00:51  time: 0.5526  data_time: 0.0428  memory: 16991  loss: 0.0205  decode.loss_ce: 0.0205  decode.acc_seg: 99.4553
-2024/07/18 16:12:36 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:12:36 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:12:36 - mmengine - INFO - Iter(train) [25000/31250]  lr: 6.9621e-04  eta: 1:00:22  time: 0.6742  data_time: 0.1514  memory: 16991  loss: 0.0152  decode.loss_ce: 0.0152  decode.acc_seg: 99.2525
 2024/07/18 16:12:41 - mmengine - INFO - Iter(val) [ 50/500]    eta: 0:00:49  time: 0.1328  data_time: 0.0126  memory: 530  
 2024/07/18 16:12:48 - mmengine - INFO - Iter(val) [100/500]    eta: 0:00:48  time: 0.0996  data_time: 0.0143  memory: 530  
@@ -1447,7 +1447,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 |  changed  | 52.38  |   72.53   | 40.99  | 35.48 | 40.99 |
 +-----------+--------+-----------+--------+-------+-------+
 2024/07/18 16:13:34 - mmengine - INFO - Iter(val) [500/500]    aAcc: 98.9900  mFscore: 75.9300  mPrecision: 85.8600  mRecall: 70.3900  mIoU: 67.2300  mAcc: 70.3900  data_time: 0.0137  time: 0.1159
-2024/07/18 16:13:34 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changerex_r18/best_mIoU_iter_21875.pth is removed
+2024/07/18 16:13:34 - mmengine - INFO - The previous best checkpoint /home/jovyan/work/saved_data/atml_building_change_detection/changer/best_mIoU_iter_21875.pth is removed
 2024/07/18 16:13:34 - mmengine - INFO - The best checkpoint with 67.2300 mIoU at 25000 iter is saved to best_mIoU_iter_25000.pth.
 2024/07/18 16:14:02 - mmengine - INFO - Iter(train) [25050/31250]  lr: 6.9558e-04  eta: 0:59:53  time: 0.5427  data_time: 0.0280  memory: 16991  loss: 0.0179  decode.loss_ce: 0.0179  decode.acc_seg: 99.6105
 2024/07/18 16:14:31 - mmengine - INFO - Iter(train) [25100/31250]  lr: 6.9495e-04  eta: 0:59:24  time: 0.6568  data_time: 0.1236  memory: 16991  loss: 0.0176  decode.loss_ce: 0.0176  decode.acc_seg: 99.3805
@@ -1468,7 +1468,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:21:39 - mmengine - INFO - Iter(train) [25850/31250]  lr: 6.8545e-04  eta: 0:52:08  time: 0.5346  data_time: 0.0343  memory: 16991  loss: 0.0177  decode.loss_ce: 0.0177  decode.acc_seg: 99.5104
 2024/07/18 16:22:08 - mmengine - INFO - Iter(train) [25900/31250]  lr: 6.8482e-04  eta: 0:51:39  time: 0.5936  data_time: 0.0565  memory: 16991  loss: 0.0189  decode.loss_ce: 0.0189  decode.acc_seg: 99.4258
 2024/07/18 16:22:37 - mmengine - INFO - Iter(train) [25950/31250]  lr: 6.8419e-04  eta: 0:51:10  time: 0.6304  data_time: 0.1063  memory: 16991  loss: 0.0181  decode.loss_ce: 0.0181  decode.acc_seg: 99.4499
-2024/07/18 16:23:06 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:23:06 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:23:06 - mmengine - INFO - Iter(train) [26000/31250]  lr: 6.8355e-04  eta: 0:50:41  time: 0.5540  data_time: 0.0445  memory: 16991  loss: 0.0166  decode.loss_ce: 0.0166  decode.acc_seg: 99.5846
 2024/07/18 16:23:34 - mmengine - INFO - Iter(train) [26050/31250]  lr: 6.8292e-04  eta: 0:50:12  time: 0.5797  data_time: 0.0448  memory: 16991  loss: 0.0182  decode.loss_ce: 0.0182  decode.acc_seg: 99.2686
 2024/07/18 16:24:02 - mmengine - INFO - Iter(train) [26100/31250]  lr: 6.8229e-04  eta: 0:49:43  time: 0.5410  data_time: 0.0229  memory: 16991  loss: 0.0176  decode.loss_ce: 0.0176  decode.acc_seg: 99.1704
@@ -1489,7 +1489,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:31:09 - mmengine - INFO - Iter(train) [26850/31250]  lr: 6.7279e-04  eta: 0:42:27  time: 0.5155  data_time: 0.0204  memory: 16991  loss: 0.0202  decode.loss_ce: 0.0202  decode.acc_seg: 99.2313
 2024/07/18 16:31:38 - mmengine - INFO - Iter(train) [26900/31250]  lr: 6.7216e-04  eta: 0:41:58  time: 0.5825  data_time: 0.0357  memory: 16991  loss: 0.0185  decode.loss_ce: 0.0185  decode.acc_seg: 99.3027
 2024/07/18 16:32:07 - mmengine - INFO - Iter(train) [26950/31250]  lr: 6.7153e-04  eta: 0:41:29  time: 0.5918  data_time: 0.0454  memory: 16991  loss: 0.0155  decode.loss_ce: 0.0155  decode.acc_seg: 99.4558
-2024/07/18 16:32:35 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:32:35 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:32:35 - mmengine - INFO - Iter(train) [27000/31250]  lr: 6.7089e-04  eta: 0:41:00  time: 0.5625  data_time: 0.0475  memory: 16991  loss: 0.0200  decode.loss_ce: 0.0200  decode.acc_seg: 99.3402
 2024/07/18 16:33:04 - mmengine - INFO - Iter(train) [27050/31250]  lr: 6.7026e-04  eta: 0:40:31  time: 0.5420  data_time: 0.0251  memory: 16991  loss: 0.0166  decode.loss_ce: 0.0166  decode.acc_seg: 99.2620
 2024/07/18 16:33:33 - mmengine - INFO - Iter(train) [27100/31250]  lr: 6.6963e-04  eta: 0:40:02  time: 0.5845  data_time: 0.0671  memory: 16991  loss: 0.0202  decode.loss_ce: 0.0202  decode.acc_seg: 99.1936
@@ -1510,7 +1510,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:40:46 - mmengine - INFO - Iter(train) [27850/31250]  lr: 6.6013e-04  eta: 0:32:48  time: 0.5757  data_time: 0.0511  memory: 16991  loss: 0.0169  decode.loss_ce: 0.0169  decode.acc_seg: 99.2072
 2024/07/18 16:41:14 - mmengine - INFO - Iter(train) [27900/31250]  lr: 6.5950e-04  eta: 0:32:19  time: 0.5598  data_time: 0.0365  memory: 16991  loss: 0.0185  decode.loss_ce: 0.0185  decode.acc_seg: 99.3806
 2024/07/18 16:41:42 - mmengine - INFO - Iter(train) [27950/31250]  lr: 6.5887e-04  eta: 0:31:50  time: 0.5319  data_time: 0.0219  memory: 16991  loss: 0.0173  decode.loss_ce: 0.0173  decode.acc_seg: 99.4683
-2024/07/18 16:42:11 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:42:11 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:42:11 - mmengine - INFO - Iter(train) [28000/31250]  lr: 6.5824e-04  eta: 0:31:21  time: 0.5572  data_time: 0.0433  memory: 16991  loss: 0.0153  decode.loss_ce: 0.0153  decode.acc_seg: 99.1978
 2024/07/18 16:42:39 - mmengine - INFO - Iter(train) [28050/31250]  lr: 6.5760e-04  eta: 0:30:52  time: 0.5539  data_time: 0.0353  memory: 16991  loss: 0.0171  decode.loss_ce: 0.0171  decode.acc_seg: 99.3472
 2024/07/18 16:43:08 - mmengine - INFO - Iter(train) [28100/31250]  lr: 6.5697e-04  eta: 0:30:23  time: 0.5861  data_time: 0.0684  memory: 16991  loss: 0.0166  decode.loss_ce: 0.0166  decode.acc_seg: 99.4640
@@ -1550,7 +1550,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 16:51:44 - mmengine - INFO - Iter(train) [28850/31250]  lr: 6.4748e-04  eta: 0:23:10  time: 0.6173  data_time: 0.0564  memory: 16991  loss: 0.0155  decode.loss_ce: 0.0155  decode.acc_seg: 99.7204
 2024/07/18 16:52:15 - mmengine - INFO - Iter(train) [28900/31250]  lr: 6.4684e-04  eta: 0:22:42  time: 0.6243  data_time: 0.0225  memory: 16991  loss: 0.0179  decode.loss_ce: 0.0179  decode.acc_seg: 99.6387
 2024/07/18 16:52:46 - mmengine - INFO - Iter(train) [28950/31250]  lr: 6.4621e-04  eta: 0:22:13  time: 0.6055  data_time: 0.0225  memory: 16991  loss: 0.0149  decode.loss_ce: 0.0149  decode.acc_seg: 99.4534
-2024/07/18 16:53:17 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 16:53:17 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 16:53:17 - mmengine - INFO - Iter(train) [29000/31250]  lr: 6.4558e-04  eta: 0:21:44  time: 0.6855  data_time: 0.1243  memory: 16991  loss: 0.0195  decode.loss_ce: 0.0195  decode.acc_seg: 99.3367
 2024/07/18 16:53:48 - mmengine - INFO - Iter(train) [29050/31250]  lr: 6.4494e-04  eta: 0:21:15  time: 0.5938  data_time: 0.0248  memory: 16991  loss: 0.0155  decode.loss_ce: 0.0155  decode.acc_seg: 99.4632
 2024/07/18 16:54:19 - mmengine - INFO - Iter(train) [29100/31250]  lr: 6.4431e-04  eta: 0:20:46  time: 0.5926  data_time: 0.0545  memory: 16991  loss: 0.0165  decode.loss_ce: 0.0165  decode.acc_seg: 99.5445
@@ -1571,7 +1571,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 17:02:06 - mmengine - INFO - Iter(train) [29850/31250]  lr: 6.3482e-04  eta: 0:13:33  time: 0.6467  data_time: 0.0861  memory: 16991  loss: 0.0162  decode.loss_ce: 0.0162  decode.acc_seg: 99.2323
 2024/07/18 17:02:37 - mmengine - INFO - Iter(train) [29900/31250]  lr: 6.3419e-04  eta: 0:13:04  time: 0.7035  data_time: 0.1082  memory: 16991  loss: 0.0173  decode.loss_ce: 0.0173  decode.acc_seg: 99.2115
 2024/07/18 17:03:08 - mmengine - INFO - Iter(train) [29950/31250]  lr: 6.3355e-04  eta: 0:12:35  time: 0.6100  data_time: 0.0404  memory: 16991  loss: 0.0161  decode.loss_ce: 0.0161  decode.acc_seg: 99.3869
-2024/07/18 17:03:39 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 17:03:39 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 17:03:39 - mmengine - INFO - Iter(train) [30000/31250]  lr: 6.3292e-04  eta: 0:12:06  time: 0.6920  data_time: 0.1381  memory: 16991  loss: 0.0152  decode.loss_ce: 0.0152  decode.acc_seg: 99.3150
 2024/07/18 17:04:09 - mmengine - INFO - Iter(train) [30050/31250]  lr: 6.3229e-04  eta: 0:11:37  time: 0.5838  data_time: 0.0449  memory: 16991  loss: 0.0200  decode.loss_ce: 0.0200  decode.acc_seg: 99.6757
 2024/07/18 17:04:40 - mmengine - INFO - Iter(train) [30100/31250]  lr: 6.3165e-04  eta: 0:11:08  time: 0.6343  data_time: 0.0660  memory: 16991  loss: 0.0157  decode.loss_ce: 0.0157  decode.acc_seg: 99.4391
@@ -1592,7 +1592,7 @@ The value is the same before and after calling `init_weights` of DIEncoderDecode
 2024/07/18 17:12:11 - mmengine - INFO - Iter(train) [30850/31250]  lr: 6.2216e-04  eta: 0:03:52  time: 0.5539  data_time: 0.0228  memory: 16991  loss: 0.0155  decode.loss_ce: 0.0155  decode.acc_seg: 99.5578
 2024/07/18 17:12:40 - mmengine - INFO - Iter(train) [30900/31250]  lr: 6.2153e-04  eta: 0:03:23  time: 0.6163  data_time: 0.0988  memory: 16991  loss: 0.0164  decode.loss_ce: 0.0164  decode.acc_seg: 99.2198
 2024/07/18 17:13:08 - mmengine - INFO - Iter(train) [30950/31250]  lr: 6.2089e-04  eta: 0:02:54  time: 0.5770  data_time: 0.0795  memory: 16991  loss: 0.0225  decode.loss_ce: 0.0225  decode.acc_seg: 99.1608
-2024/07/18 17:13:37 - mmengine - INFO - Exp name: changerex_r18_512x512_60k_s2looking_20240718_120232
+2024/07/18 17:13:37 - mmengine - INFO - Exp name: changer_512x512_60k_s2looking_20240718_120232
 2024/07/18 17:13:37 - mmengine - INFO - Iter(train) [31000/31250]  lr: 6.2026e-04  eta: 0:02:25  time: 0.5686  data_time: 0.0375  memory: 16991  loss: 0.0197  decode.loss_ce: 0.0197  decode.acc_seg: 99.0720
 2024/07/18 17:14:06 - mmengine - INFO - Iter(train) [31050/31250]  lr: 6.1963e-04  eta: 0:01:56  time: 0.6011  data_time: 0.0752  memory: 16991  loss: 0.0162  decode.loss_ce: 0.0162  decode.acc_seg: 99.5949
 2024/07/18 17:14:34 - mmengine - INFO - Iter(train) [31100/31250]  lr: 6.1900e-04  eta: 0:01:27  time: 0.5644  data_time: 0.0386  memory: 16991  loss: 0.0177  decode.loss_ce: 0.0177  decode.acc_seg: 99.3808

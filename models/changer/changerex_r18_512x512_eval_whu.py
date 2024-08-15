@@ -46,7 +46,7 @@ env_cfg = dict(
     dist_cfg=dict(backend='nccl'),
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
 launcher = 'none'
-load_from = 'changerex_r18/iter_25000.pth'
+load_from = 'changer/iter_25000.pth'
 log_level = 'INFO'
 log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
 model = dict(
@@ -177,9 +177,9 @@ vis_backends = [
 visualizer = dict(
     alpha=1.0,
     name='visualizer',
-    save_dir='./changerex_r18/whu',
+    save_dir='./changer/whu',
     type='CDLocalVisualizer',
     vis_backends=[
         dict(type='CDLocalVisBackend'),
     ])
-work_dir = './changerex_r18'
+work_dir = './changer'

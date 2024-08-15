@@ -89,7 +89,7 @@ env_cfg = dict(
     dist_cfg=dict(backend='nccl'),
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
 launcher = 'none'
-load_from = 'changerex_r18/iter_25000.pth'
+load_from = 'changer/iter_25000.pth'
 log_level = 'INFO'
 log_processor = dict(by_epoch=True, type='LogProcessor', window_size=50)
 model = dict(
@@ -220,12 +220,12 @@ vis_backends = [
 visualizer = dict(
     alpha=1.0,
     name='visualizer',
-    save_dir='./changerex_r18/whu',
+    save_dir='./changer/whu',
     type='CDLocalVisualizer',
     vis_backends=[
         dict(type='CDLocalVisBackend'),
     ])
-work_dir = './changerex_r18'
+work_dir = './changer'
 
 2024/07/29 11:39:18 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
 2024/07/29 11:39:18 - mmengine - INFO - Hooks will be executed in the following order:
@@ -314,7 +314,7 @@ after_run:
 (BELOW_NORMAL) LoggerHook                         
  -------------------- 
 2024/07/29 11:39:18 - mmengine - WARNING - The prefix is not set in metric class IoUMetric.
-2024/07/29 11:39:19 - mmengine - INFO - Load checkpoint from changerex_r18/iter_25000.pth
+2024/07/29 11:39:19 - mmengine - INFO - Load checkpoint from changer/iter_25000.pth
 2024/07/29 11:39:23 - mmengine - INFO - Epoch(test) [  50/1950]    eta: 0:02:26  time: 0.0773  data_time: 0.0373  memory: 4360  
 2024/07/29 11:39:25 - mmengine - INFO - Epoch(test) [ 100/1950]    eta: 0:01:53  time: 0.0452  data_time: 0.0346  memory: 226  
 2024/07/29 11:39:27 - mmengine - INFO - Epoch(test) [ 150/1950]    eta: 0:01:40  time: 0.0442  data_time: 0.0340  memory: 226  

@@ -98,7 +98,7 @@ img_ratios = [
     1.25,
 ]
 launcher = 'none'
-load_from = 'changerex_r18/iter_25000.pth'
+load_from = 'changer/iter_25000.pth'
 log_level = 'INFO'
 log_processor = dict(by_epoch=False)
 model = dict(
@@ -381,12 +381,12 @@ vis_backends = [
 visualizer = dict(
     alpha=1.0,
     name='visualizer',
-    save_dir='./changerex_r18/s2looking',
+    save_dir='./changer/s2looking',
     type='CDLocalVisualizer',
     vis_backends=[
         dict(type='CDLocalVisBackend'),
     ])
-work_dir = './changerex_r18'
+work_dir = './changer'
 
 2024/07/29 11:24:07 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
 2024/07/29 11:24:07 - mmengine - INFO - Hooks will be executed in the following order:
@@ -475,7 +475,7 @@ after_run:
 (BELOW_NORMAL) LoggerHook                         
  -------------------- 
 2024/07/29 11:24:07 - mmengine - WARNING - The prefix is not set in metric class IoUMetric.
-2024/07/29 11:24:10 - mmengine - INFO - Load checkpoint from changerex_r18/iter_25000.pth
+2024/07/29 11:24:10 - mmengine - INFO - Load checkpoint from changer/iter_25000.pth
 2024/07/29 11:24:20 - mmengine - INFO - Iter(test) [  50/1000]    eta: 0:03:14  time: 0.1277  data_time: 0.0994  memory: 4327  
 2024/07/29 11:24:26 - mmengine - INFO - Iter(test) [ 100/1000]    eta: 0:02:27  time: 0.1249  data_time: 0.0969  memory: 439  
 2024/07/29 11:24:32 - mmengine - INFO - Iter(test) [ 150/1000]    eta: 0:02:07  time: 0.1209  data_time: 0.0950  memory: 439  

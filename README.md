@@ -35,7 +35,7 @@ pip install regex
 ## Model Benchmarking  
 The configuration files and logs of model training and evaluation can be found in the `models` directory.
 
-The trained model checkpoints are available under the link found in the file [models/model_checkpoints.txt], and the results of applying them on `S2Looking` under [results/S2Looking_test/s2looking_results.txt], `LEVIR-CD` under [results/LEVIR/levir_results.txt], and of `WHU-CD` under [results/WHU/whu_results.txt].
+The trained model checkpoints are available under the link found in the file [models/model_checkpoints.txt](models/model_checkpoints.txt), and the results of applying them on `S2Looking` under [results/S2Looking_test/s2looking_results.txt](results/S2Looking_test/s2looking_results.txt), `LEVIR-CD` under [results/LEVIR/levir_results.txt](results/LEVIR/levir_results.txt), and of `WHU-CD` under [results/WHU/whu_results.txt](results/WHU/whu_results.txt).
 
 All commands are executed at the root directory which is organized as follows:  
 
@@ -80,9 +80,9 @@ $ python open-cd/tools/test.py open-cd/configs/{opencd_model_dir}/{train_config}
 | Changer      | changer          | changer      | changer_512x512_60k_s2looking                | changer_512x512_60k_s2looking / changer_512x512_eval_levircd / changer_512x512_eval_whu                                              |
 | TTP          | ttp              | ttp          | ttp_vit-sam-l_512x512_1M_s2looking           | ttp_vit-sam-l_512x512_1M_s2looking / ttp_vit-sam-l_512x512_eval_levircd / ttp_vit-sam-l_512x512_eval_whu                             |
 ## Datasets Download and Preprocessing
-**LEVIR-CD** is small enough that it could be downloaded from GoogleDrive (https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim) and uploaded via the UI to the Jupyter server.
+**LEVIR-CD** (https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim) is small enough that it could be downloaded from GoogleDrive and uploaded via the UI to the Jupyter server.
 
-**S2Looking** was too big for that process, and `wget` could not be used with GoogleDrive due to a popup window. So I downloaded the dataset to my own machine, uploaded it on the filehosting service *Filebin*, and downloaded it to the server from there via `wget`.
+**S2Looking** (https://drive.google.com/drive/folders/1zzb6hif2hwWx4z8UIMLpMAInkhbmmrFY) was too big for that process, and `wget` could not be used with GoogleDrive due to a popup window. So I downloaded the dataset to my own machine, uploaded it on the filehosting service *Filebin*, and downloaded it to the server from there via `wget`.
 
 The download of **WHU-CD** via `wget` took multiple hours due to the bad internet connection to a server presumably located in China. Afterwards, the files needed to be moved to other subdirectories for `open-cd` to be able to handle them:
 1. As we want to use the whole dataset for evaluation, we want to move all files into one subdirectory. Because some of the file names are appearing twice, the prefix `test_` is added to alll images in subfolders of `/test` (analogously `train_` for images in `/train`)

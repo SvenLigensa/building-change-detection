@@ -1,7 +1,7 @@
 # Building-Change Detection
-This is the repository accompanying the thesis *"Understanding Building-Change Detection"* which I wrote as part of the seminar *Advanced Topics in Machine Learning* (ST 2024).
+This is the repository accompanying the thesis *"Understanding Building-Change Detection"* which I wrote as part of the seminar **Advanced Topics in Machine Learning** (ST 2024).
 
-In the theoretical part, some models for Change Detection (CD) introduced in the last years were presented and in the empirical part, they were benchmarked and their performance analyzed.
+In the theoretical part of the thesis, some models for Building Change Detection (Building CD) introduced in the last years were presented and in the empirical part, they were benchmarked and their performance analyzed.
 ## Getting Started
 This repository is based on the [open-cd](https://github.com/likyoo/open-cd "open-cd") toolbox. To obtain a working installation, I performed the following steps:
 ```bash
@@ -35,7 +35,7 @@ pip install regex
 ## Model Benchmarking  
 The configuration files and logs of model training and evaluation can be found in the `models` directory.
 
-The trained model checkpoints are available [here](TODO SCIEBO LINK "Model Checkpoints"), and the results when applying them to the three datasets `S2Looking`, `LEVIR-CD` and `WHU-CD` are available [here](TODO SCIEBO LINK "Results").
+The trained model checkpoints are available under the link found in the file [models/model_checkpoints.txt], and the results of applying them on `S2Looking` under [results/S2Looking_test/s2looking_results.txt], `LEVIR-CD` under [results/LEVIR/levir_results.txt], and of `WHU-CD` under [results/WHU/whu_results.txt].
 
 All commands are executed at the root directory which is organized as follows:  
 
@@ -81,7 +81,9 @@ $ python open-cd/tools/test.py open-cd/configs/{opencd_model_dir}/{train_config}
 | TTP          | ttp              | ttp          | ttp_vit-sam-l_512x512_1M_s2looking           | ttp_vit-sam-l_512x512_1M_s2looking / ttp_vit-sam-l_512x512_eval_levircd / ttp_vit-sam-l_512x512_eval_whu                             |
 ## Datasets Download and Preprocessing
 **LEVIR-CD** is small enough that it could be downloaded from GoogleDrive (https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim) and uploaded via the UI to the Jupyter server.
+
 **S2Looking** was too big for that process, and `wget` could not be used with GoogleDrive due to a popup window. So I downloaded the dataset to my own machine, uploaded it on the filehosting service *Filebin*, and downloaded it to the server from there via `wget`.
+
 The download of **WHU-CD** via `wget` took multiple hours due to the bad internet connection to a server presumably located in China. Afterwards, the files needed to be moved to other subdirectories for `open-cd` to be able to handle them:
 1. As we want to use the whole dataset for evaluation, we want to move all files into one subdirectory. Because some of the file names are appearing twice, the prefix `test_` is added to alll images in subfolders of `/test` (analogously `train_` for images in `/train`)
 2. Images in the `/splited_images` subfolder of `/2012` are moved to the folder `/A` (analogously `/2016` to `/B`)
